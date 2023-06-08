@@ -1,0 +1,87 @@
+---
+sidebar_position: 1
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+# Administrator guide
+
+This page will provide guidance for administrators to help add configurations and settings to your source control tools to prevent unwanted access, and require the use of commit signing.
+
+## Overview
+
+The administrator refers to any person/organization responsible for overseeing and owning the source control tools where your code is managed. This can range from a single developer looking to protect their personal repository, or large enterprises with a team dedicated to managing developer tools.
+
+This page will provide guidance on how to enable MFA and commit signing on GitHub and GitLab.
+
+While the guidance on this page isn’t specific to YubiKeys, it will lay the foundations to allow your developers to leverage their security keys for seamless authentication and commit signing.
+
+## Account protection
+
+We will start by enabling account protection in your source control tool. The main idea is to **not** allow your users to use traditional forms of authentication that are prone to phishing attacks. You will want to require the use of two-factor or multi-factor authentication to access accounts
+
+### Enforce 2FA on your personal account
+
+<Tabs groupId="source-control-type" className="my_tabs">
+  <TabItem value="GitHub" label="GitHub" default>
+
+[Configuring two-factor authentication using a security
+key](https://docs.github.com/en/authentication/securing-your-account-with-two-factor-authentication-2fa/configuring-two-factor-authentication#configuring-two-factor-authentication-using-a-security-key)
+
+  </TabItem>
+  <TabItem value="GitLab" label="GitLab">
+
+[Enable two-factor authentication](https://docs.gitlab.com/ee/user/profile/account/two_factor_authentication.html#enable-two-factor-authentication)
+
+  </TabItem>
+</Tabs>
+
+### Enforce 2FA in your organization
+
+<Tabs groupId="source-control-type" className="my_tabs">
+  <TabItem value="GitHub" label="GitHub" default>
+
+[Requiring two-factor authentication in your organization](https://docs.github.com/en/organizations/keeping-your-organization-secure/managing-two-factor-authentication-for-your-organization/requiring-two-factor-authentication-in-your-organization#requiring-two-factor-authentication-in-your-organization)
+
+  </TabItem>
+  <TabItem value="GitLab" label="GitLab">
+
+[Enable two-factor authentication](https://docs.gitlab.com/ee/user/profile/account/two_factor_authentication.html#enable-two-factor-authentication)
+
+  </TabItem>
+</Tabs>
+
+:::caution Ensure you understand the effects of changing this setting
+Before you require the use of 2FA in your source control tool, ensure that you understand how this will affect you and your users. For instance, your tool may remove all members in your organization who do not have a 2FA factor enabled.
+:::
+
+### Communicate your organization’s preference for Security Keys
+
+Both of the tools listed above allow for the user to select a variety of different traditional 2FA methods, such as an authenticator app, or SMS OTP. Ensure that you clearly articulate to developers in your organization that they should be enrolling their YubiKey as their 2FA method.
+
+Some tools may allow you to view event/audit logs to see 2FA enrollment events. This will allow you to ensure that users are enrolling security keys vs enrolling other 2FA types.
+
+## Commit signing
+
+Next let’s dive into steps that administrators can take to ensure that users are required to submit commits that have been cryptographically signed by a trusted source. This will be done by enforcing branch protection rules on a specific repository.
+
+We are focused on enforcing branch protection rules that require commit signing, but you should also take the opportunity to add other requirements such as requiring pull requests and approvals for your main branch.
+
+### Enforce branch protection rules
+
+<Tabs groupId="source-control-type" className="my_tabs">
+  <TabItem value="GitHub" label="GitHub" default>
+
+[Create a branch protection rule](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/managing-a-branch-protection-rule#creating-a-branch-protection-rule)
+
+  </TabItem>
+
+  <TabItem value="GitLab" label="GitLab">
+
+[Reject unsigned commits](https://docs.gitlab.com/ee/user/project/repository/push_rules.html#prevent-unintended-consequences)
+
+  </TabItem>
+</Tabs>
+
+Note that signing commits will require that your developers generate either SSH or GPG keys using their YubiKeys. The next page, [Developer guide](/docs/guides/developers), will cover the steps needed to add signing keys to a developers account in more detail. It’s also important for administrators to ensure that developer machines have the tools needed to help in the generation of signing keys.

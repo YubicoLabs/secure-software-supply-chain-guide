@@ -1,0 +1,259 @@
+---
+sidebar_position: 2
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+# Developer guide
+
+This guide will provide steps that a developer can take to secure their development environment, and contributions to software projects.
+
+## Overview
+
+This guide is not only meant for developers; this can be used to provide guidance to any member of a project or organization who is contributing code, configurations, assets, or content to a software project.
+
+The key here is to provide quickstart methods that can be quickly leveraged by any of the personas listed above, even when they don’t have experience leveraging technologies like the YubiKey, SSH, or GPG; it’s not important for them to understand HOW these tools work, it’s only important that the experience in setting up these tools is seamless.
+
+This guide will provide steps on how to register your YubiKey as a 2FA factor, how to generate an SSH key for authenticating to git without a username/password, and how to generate an SSH or GPG key for commit signing.
+
+## 5 minute quickstart
+
+If you don't want to read all of the content below, then just perform the following actions to quickly bootstrap your account and environment. These steps will add a security key to your account for browser authentication, and generate/add an SSH key to your account for git authentication and commit signing.
+
+<ol style={{fontWeight: 'bold'}}>
+  <li>Secure your account with a security key</li>
+</ol>
+<Tabs groupId="source-control-type" className="my_tabs">
+  <TabItem value="GitHub" label="GitHub" default>
+
+[Configuring two-factor authentication using a security key](https://docs.github.com/en/authentication/securing-your-account-with-two-factor-authentication-2fa/configuring-two-factor-authentication#configuring-two-factor-authentication-using-a-security-key)
+
+  </TabItem>
+  <TabItem value="GitLab" label="GitLab">
+
+[Set up a WebAuthn device](https://docs.gitlab.com/ee/user/profile/account/two_factor_authentication.html#set-up-a-webauthn-device)
+
+  </TabItem>
+</Tabs>
+
+<ol style={{ fontWeight: "bold" }} start="2">
+  <li>Follow the steps below</li>
+</ol>
+<Tabs groupId="source-control-type" className="my_tabs">
+  <TabItem value="GitHub" label="GitHub" default>
+
+<div>
+  <ol>
+    <li>Clone the repository</li>
+  </ol>
+</div>
+
+```bash
+git clone https://github.com/YubicoLabs/secure-software-supply-chain-guide.git
+```
+
+<div>
+  <ol start="2">
+    <li>Navigate to the scripts folder</li>
+  </ol>
+</div>
+
+```bash
+cd secure-software-supply-chain-guide/scripts
+```
+
+<div>
+  <ol start="3">
+    <li>Run the command</li>
+  </ol>
+</div>
+
+:::caution
+Note that the script below will create an SSH key that will be used for BOTH authentication and signing
+:::
+
+```bash
+# Replace my_email@test.com with your email address
+
+./Bootstrap_ssh.sh my_email@test.com
+# Follow along with the steps presented by the terminal prompts
+```
+
+<div>
+  <ol start="4">
+    <li>
+      If your account leverages SSO{" "}
+      <a href="https://docs.github.com/en/enterprise-cloud@latest/authentication/authenticating-with-saml-single-sign-on/authorizing-an-ssh-key-for-use-with-saml-single-sign-on#authorizing-an-ssh-key">
+        follow these steps to authorize your new SSH key
+      </a>
+    </li>
+  </ol>
+</div>
+
+  </TabItem>
+  <TabItem value="GitLab" label="GitLab">
+
+Not currently available, please use the [manual steps below](#ssh-authentication).
+
+  </TabItem>
+</Tabs>
+
+## Account protection
+
+For the developer persona, there are two cases of account protection. The first relates to authentication from the browser; a developer may be looking to view their repository from the web, or may be conducting a browser based authentication flow opened from a native or CLI based application.
+
+The second case is around git authentication from the CLI. While many of the primary source control providers come with a CLI tool that can leverage browser based authentication, your developers may be looking for a more seamless experience where they can rely on SSH based authentication, and not require the use of credentials stored in an accessible way on their machine.
+
+### Browser authentication
+
+Browser based authentication is presented to the user when they attempt to access their account from the browser. The first step for a developer will be to **add their security key to their account**.
+
+<Tabs groupId="source-control-type" className="my_tabs">
+  <TabItem value="GitHub" label="GitHub" default>
+
+[Configuring two-factor authentication using a security key](https://docs.github.com/en/authentication/securing-your-account-with-two-factor-authentication-2fa/configuring-two-factor-authentication#configuring-two-factor-authentication-using-a-security-key)
+
+  </TabItem>
+  <TabItem value="GitLab" label="GitLab">
+
+[Set up a WebAuthn device](https://docs.gitlab.com/ee/user/profile/account/two_factor_authentication.html#set-up-a-webauthn-device)
+
+  </TabItem>
+</Tabs>
+
+Once the security key is added, the user will then be prompted for it when they **attempt to access their account**.
+
+<Tabs groupId="source-control-type" className="my_tabs">
+  <TabItem value="GitHub" label="GitHub" default>
+
+[Using a security key](https://docs.github.com/en/authentication/securing-your-account-with-two-factor-authentication-2fa/accessing-github-using-two-factor-authentication#using-a-security-key)
+
+  </TabItem>
+  <TabItem value="GitLab" label="GitLab">
+
+[Sign in using a WebAuthn device](https://docs.gitlab.com/ee/user/profile/account/two_factor_authentication.html#sign-in-using-a-webauthn-device)
+
+  </TabItem>
+</Tabs>
+
+### SSH authentication
+
+Traditionally a developer could save their account credentials to a local configuration file that could be used by git to authorize actions. This would have allowed a developer to bypass the entering of their credentials for every git operation. Well, at this point in the documentation, it should be understood that our goal is to prevent the use of phishable credentials, such as usernames and passwords, or long lived authorization tokens on the machine.
+
+Locally storing credentials was such an issue, that GitHub banned the use of passwords for git operations. While the GitHub/GitLab CLI tools, mobile apps, and personal access tokens can be used, there is a better way.
+
+Git supports the ability to use public key based authentication through SSH; this feature is complimented by the YubiKey's ability to generate SSH keys and to authenticate with them. A benefit to using YubiKey backed SSH keys is the possession factor - an attacker would be unable to perform a git operation without possession of the YubiKey that holds the private key. Another benefit is the YubiKey presents minimal disruption to a developers workflow. If the YubiKey is already present on a user's machine, all they need to do is tap it, and enter a pin to authorize a request. This is more ideal than having to perform a full browser based authentication ceremony, finding your phone to perform authorization from an app, or replacing an expired access token.
+
+Some developers may not be familiar with SSH, or how to use the tools to generate the keys. The instructions below can be used to allow a developer to quickly bootstrap their environment with a ready to use SSH key, without requiring them to know the ins-and-outs of SSH.
+
+Below we will demonstrate how to **manually** perform the generation and addition of an SSH key to your account. If you are looking for an automated tool, please see the [5 min quickstart section above](#5-minute-quickstart)
+
+#### Generate an SSH key
+
+We will begin by generating a new SSH key, and adding it to your SSH agent.
+
+1. Ensure that you are using OpenSSH 8.2 or later
+2. Run the command below to generate a new SSH key
+
+```bash
+ssh-keygen -t ed25519-sk -C "your_email_here" -O resident -f $HOME/.ssh/id_ed25519_sk
+
+# When prompted to enter a passphrase, you can choose whether or not to include one
+```
+
+:::info
+Below are some details about the command used above.
+
+- Ensure that you are using the -sk options when creating the key. This will ensure that key generation is done from a hardware security key
+- We are leveraging ed25519-sk, but feel free to leverage ecdsa-sk as both algorithm types are supported by GitHub and GitLab; the YubiKey is capable of generating both
+- Ensure you replace the -C parameter with your email address
+- We are setting the option to use a resident key - This will make it easier to use your YubiKey to import and export the SSH key to other devices
+
+:::
+
+3. Start your ssh-agent in the background
+
+```bash
+eval "$(ssh-agent -s)"
+```
+
+4. If on **macOS**, create and configure the SSH config file (**If on Windows or Linux, please skip this step and proceed to step 5**)
+
+```bash
+touch $HOME/.ssh/config
+
+echo "Host github.com
+  AddKeysToAgent yes
+  IdentityFile ~/.ssh/id_ed25519_sk" >> $HOME/.ssh/config
+```
+
+5. Add the key to your SSH agent
+
+```bash
+ssh-add $HOME/.ssh/id_ed25519_sk
+
+# If you generated a key on macOS WITH a passphrase, then use the following command
+ssh-add --apple-use-keychain $HOME/.ssh/id_ed25519_sk
+```
+
+#### Add the SSH key to your account
+
+Now that they key has been created, use the following guides to add the SSH key to your account for authentication
+
+<Tabs groupId="source-control-type" className="my_tabs">
+  <TabItem value="GitHub" label="GitHub" default>
+
+[Adding a new SSH key to your account](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account?tool=webui)
+
+:::info
+When prompted for **Key type**, ensure that you select the appropriate option. Note that you can use the same SSH key for both operations, you will just need to add it twice (once for each key type)
+
+Authentication key will be used for authentication using SSH
+
+Signing key will be used for commit signing
+
+:::
+
+  </TabItem>
+  <TabItem value="GitLab" label="GitLab">
+
+[Add an SSH key to your GitLab account](https://docs.gitlab.com/ee/user/ssh.html#add-an-ssh-key-to-your-gitlab-account)
+
+  </TabItem>
+</Tabs>
+
+## Commit Signing
+
+Next let’s go over how a developer can enable commit signing in their environment. The goal is to provide the source control tool the ability to determine if the code being added came from a trustworthy, and valid source. Verification of the source can be done using the same public key cryptography mechanism that we used for authentication.
+
+See below for an example of how a commit will appear when signed vs when not signed.
+
+![Example of signed and unsigned commits](/img/commit_example.png)
+
+This will allow for your team to employ two mechanisms to ensure that unsigned code is not added to your main branch:
+
+- Branch protection rules may prevent un-signed commits from being pushed to the repository
+- This will provide a way for code reviewers to reject pull requests that contain un-signed commits
+
+To sign commits the developer needs to generate a public key, add the public key to their source control tool, and then enable a few settings in their local git environment to leverage the key to sign commits before they are pushed to source control.
+
+Git commit signing is traditionally done with GPG keys, but many of the popular source control tools now allow you to leverage SSH keys. YubiKey supports both key types, so It’s up to your security policies to determine which approach works best for your use case and environment. This guide will focus on leveraging SSH keys in order to create cohesion with the previous section on authentication keys. Also linked below is a YubicoLabs resource to walk you through how to create GPG keys.
+
+### Using SSH
+
+1. [Follow the steps above](#generate-an-ssh-key) to generate an SSH key using your YubiKey.
+2. [Follow the steps above](#add-the-ssh-key-to-your-account) to add the SSH key for commit signing - **Ensure that when prompted for `Key type` that you select `Signing key`**
+3. Once added to your account, run the following commands to ensure that commits are always signed, and that signing is performed using SSH
+
+```bash
+git config --global gpg.format ssh
+
+git config --global user.signingkey $HOME/.ssh/id_ed25519_sk
+
+git config --global commit.gpgsign true
+```
+
+### Using GPG
+
+[Yubico labs - Sign git commits YubiKey](https://github.com/YubicoLabs/sign-git-commits-yubikey)

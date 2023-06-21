@@ -31,7 +31,7 @@ Once an application has been developed then it's time to get it into the hands o
 - Corrupted the downloadable executable that is posted to your website
 - Convinced a user to download the executable from an untrusted source
 
-In both cases, your users will have downloaded software has been corrupted, and not part of your official release.
+In both cases, your users will have downloaded software that has been corrupted, and is not part of your official release.
 
 ## Challenges in securing software supply chains
 

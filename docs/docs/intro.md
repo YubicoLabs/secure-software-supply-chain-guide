@@ -16,7 +16,7 @@ A **software supply chain attack** is when malicious code is added into software
 
 With this in mind you may be asking what can be done to protect your codebase? Yubico’s various products can be leveraged in ways that can help protect software through the development lifecycle. In this series we will explore different attack scenarios, and step-by-step instructions on how to mitigate the risk using YubiKeys and the YubiHSM2.
 
-Click the button below ff you're ready to begin!
+Click the button below if you're ready to begin!
 
 ## Yubico Developer Program
 

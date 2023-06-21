@@ -44,7 +44,12 @@ The YubiKey is able to generate cryptographic keys that are capable of signing c
 
 Code signing focuses on the ability to check the integrity of software either by your automated pipelines for build/releases, or consumers using your application.
 
-Code signing is important as it allows potential users of executables and scripts to ensure that the material has not been changed after it was signed by the software publisher. On one hand, this will ensure that your consumers have a way to trust the applications that you are providing to them. On the other hand, this allows you to verify software that you are utilizing that was provided by external parties.
+Code signing is important as it allows users of executables and scripts to ensure that the material has not been changed after it was signed by the software publisher; this will help in the following scenarios:
+
+- Ensures that your consumers have a way to trust the applications that you provide
+- Allows you to verify software that you are utilizing, that was provided by another entity
+
+Overall, it's mutually beneficial for all applications to leverage code signing as it can protect both you, and your consumers
 
 The YubiHSM2 is capable of generating a key pair that could be used for code signing. This ensures that the keys used for the signing operation are never leaked and are only present on the physical security device itself; preventing an attacker from using a leaked private key to impersonate your organization when signing a malicious executable.
 

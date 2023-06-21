@@ -5,7 +5,7 @@ import styles from './styles.module.css';
 const FeatureList = [
   {
     title: 'Protection for every person',
-    image: "/img/full_flow.png",
+    image: "/secure-software-supply-chain-guide/img/full_flow.png",
     description: (
       <>
         Note how Yubico's products can be used to protect each actor present in building, maintaining, and using an application. 

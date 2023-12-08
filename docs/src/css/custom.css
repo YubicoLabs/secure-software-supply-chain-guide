@@ -42,7 +42,12 @@ video {
 }
 
 .tabs-container {
-  border:2px solid #9aca3c;
+  border: 2px solid #9aca3c;
   padding: 1em;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.player-wrapper {
+  position: relative;
+  /* Player ratio: 100 / (1280 / 720) */
 }

@@ -68,6 +68,14 @@ Next let’s dive into steps that administrators can take to ensure that users a
 
 We are focused on enforcing branch protection rules that require commit signing, but you should also take the opportunity to add other requirements such as requiring pull requests and approvals for your main branch.
 
+:::tip
+
+Requiring commit signing is a tactic that works well for developers in a contained ecosystem, such as an organization. In these cases, a security team, or admin, is able to communicate and enforce commit signing based on internal mandates or requirements. The keys are also correlated to trusted internal accounts that are owned, and managed by the organization.
+
+Commit signing may not work well in an open ecosystem, such as an open-source project being built by an anonymous population. Open-source contributors will be utilizing accounts not part of your organization, therefore the signed commit doesn't provide the assurance that the code came from a trustworthy source. In this case you should focus on requiring high assurance MFA of your administrators who are able to merge the pull requests from anonymous accounts into the main branch.
+
+:::
+
 ### Enforce branch protection rules
 
 <Tabs groupId="source-control-type" className="my_tabs">

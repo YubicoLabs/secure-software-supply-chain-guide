@@ -6,15 +6,15 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Secure Software Supply Chain Guide',
-  tagline: 'Learn how to leverage the YubiKey and YubiHSM to help enhance, streamline, and secure your software development practices.',
+  title: 'Protect your software supply chain with YubiKeys and YubiHSMs',
+  tagline: 'Learn how to leverage the YubiKey and YubiHSM to help enhance, streamline, and secure your software development practices. This guide is for developers, architects, and administrators looking to get the most of their Yubico tools to improve their developer experience.',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
   url: 'https://yubicolabs.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/',
+  baseUrl: '/secure-software-supply-chain-guide',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
@@ -57,12 +57,12 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       // Replace with your project's social card
-      image: 'img/yubico-logo.png',
+      image: '/img/yubico-logo.png',
       navbar: {
         title: 'Secure Software Supply Chain Guide',
         logo: {
           alt: 'My Site Logo',
-          src: 'img/yubico-logo.png',
+          src: '/img/yubico-logo.png',
         },
         items: [
           {

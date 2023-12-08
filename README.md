@@ -34,13 +34,13 @@
   <p align="center">
     Developer guide to teach you how to maximize the power of the YubiKey to secure your software supply chain. This guide contains examples on how to use the YubiKey to enable account protections, commit signing, and code signing. By the end of this guide you, and your organization will have the tools needed to quickly onboard developers to allow them to focus more time on producing code, and less time configuring their environment. 
     <br />
-    <a href="https://github.com/YubicoLabs/passkey-relying-party-example/tree/master#about-the-project"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/YubicoLabs/secure-software-supply-chain-guide/tree/master#about-the-project"><strong>Explore the docs »</strong></a>
     <br />
     <br />
     ·
-    <a href="https://github.com/YubicoLabs/secure-software-supply-chain-guide">Report Bug</a>
+    <a href="https://github.com/YubicoLabs/secure-software-supply-chain-guide/issues/new?assignees=&labels=&projects=&template=bug_report.md&title=">Report Bug</a>
     ·
-    <a href="https://github.com/YubicoLabs/secure-software-supply-chain-guide">Request Feature</a>
+    <a href="https://github.com/YubicoLabs/secure-software-supply-chain-guide/issues/new?assignees=&labels=&projects=&template=feature_request.md&title=">Request Feature</a>
   </p>
 </div>
 

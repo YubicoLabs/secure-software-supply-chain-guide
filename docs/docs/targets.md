@@ -16,7 +16,7 @@ Note that this material is not encompassing of every risk associated with this t
 
 Any topic that relates to software development will have developers at the forefront. The term developers is used to describe this persona, but this can be encompassed by any member of your organization who contributes code/material to your software projects, including: architects, technical writers, designers, and more. This isn’t limited to just people in your organization, this can also include 3rd party developers being contracted by your company, and the developers who maintain the open source or SaaS projects being leveraged from your software.
 
-Compromising a developer's account would allow an attacker to add their own malicious functions to a software project, making them a prime target.
+Compromising a developer's account would allow an attacker to add their own malicious functions to a software project, making them a prime target. Keep in mind, that this isn't only the code being written directly to your repository, but the 3rd party dependencies and packages that are being used to support your core business logic.
 
 ### Administrators
 
@@ -49,4 +49,4 @@ Some developers may see secure software development practices as hindering to th
 
 ### Dependency on SaaS, OSS, and MSPs
 
-The use of Software-as-a-service (SaaS) and open-source software (OSS) tools has continued to increase. More and more developers are including code that they did not write into their solutions. Enterprises that leverage managed service providers (MSPs) are now also allowing external developers to contribute to their software projects. Developers now need to manage the complexities of secure software development and tooling not just for their organization, but for the external ones that are contributing to a project.
+The use of Software-as-a-service (SaaS) and open-source software (OSS) tools has continued to increase. More and more developers are including code that they did not write into their solutions. Enterprises that leverage managed service providers (MSPs) are now also allowing external developers to contribute to their software projects. Open-source software projects are also a prime target, as these 3rd party dependencies are often installed and updated without much thought behind the code that the packages could be introducing. With these challenges, developers now need to manage the complexities of secure software development and tooling not just for their organization, but for the external ones that are contributing to a project.

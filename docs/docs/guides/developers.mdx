@@ -4,6 +4,7 @@ sidebar_position: 2
 
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
+import ReactPlayer from "react-player";
 
 # Developer guide
 
@@ -27,13 +28,25 @@ If you don't want to read all of the content below, then just perform the follow
 <Tabs groupId="source-control-type" className="my_tabs">
   <TabItem value="GitHub" label="GitHub" default>
 
-[Configuring two-factor authentication using a security key](https://docs.github.com/en/authentication/securing-your-account-with-two-factor-authentication-2fa/configuring-two-factor-authentication#configuring-two-factor-authentication-using-a-security-key)
+:::tip Security keys vs passkeys
+GitHub allows you to leverage authentication through either a passkey or security key as 2FA. YubiKeys do support passkeys in the form of a device-bound discoverable credential. It's up to your security policy to decide which preference you have for your users, as YubiKeys will support both options.
 
+Yubico generally recommends to generate a passkey on a YubiKey as it enables passwordless login, and removes the need to utilize a passkey
+
+:::
+
+<ul>
+<li>
+    <a href="https://docs.github.com/en/authentication/authenticating-with-a-passkey/managing-your-passkeys">Managing your passkeys</a>
+  </li>
+  <li>
+    <a href="https://docs.github.com/en/authentication/securing-your-account-with-two-factor-authentication-2fa/configuring-two-factor-authentication#configuring-two-factor-authentication-using-a-security-key">Configuring two-factor authentication using a security key</a>
+  </li>
+</ul>
   </TabItem>
   <TabItem value="GitLab" label="GitLab">
-
-[Set up a WebAuthn device](https://docs.gitlab.com/ee/user/profile/account/two_factor_authentication.html#set-up-a-webauthn-device)
-
+  <a href="https://docs.gitlab.com/ee/user/profile/account/two_factor_authentication.html#set-up-a-webauthn-device">Set up a WebAuthn
+    device</a>
   </TabItem>
 </Tabs>
 
@@ -112,13 +125,25 @@ Browser based authentication is presented to the user when they attempt to acces
 <Tabs groupId="source-control-type" className="my_tabs">
   <TabItem value="GitHub" label="GitHub" default>
 
-[Configuring two-factor authentication using a security key](https://docs.github.com/en/authentication/securing-your-account-with-two-factor-authentication-2fa/configuring-two-factor-authentication#configuring-two-factor-authentication-using-a-security-key)
+:::tip Security keys vs passkeys
+GitHub allows you to leverage authentication through either a passkey or security key as 2FA. YubiKeys do support passkeys in the form of a device-bound discoverable credential. It's up to your security policy to decide which preference you have for your users, as YubiKeys will support both options.
 
+Yubico generally recommends to generate a passkey on a YubiKey as it enables passwordless login, and removes the need to utilize a passkey
+
+:::
+
+<ul>
+<li>
+    <a href="https://docs.github.com/en/authentication/authenticating-with-a-passkey/managing-your-passkeys">Managing your passkeys</a>
+  </li>
+  <li>
+    <a href="https://docs.github.com/en/authentication/securing-your-account-with-two-factor-authentication-2fa/configuring-two-factor-authentication#configuring-two-factor-authentication-using-a-security-key">Configuring two-factor authentication using a security key</a>
+  </li>
+</ul>
   </TabItem>
   <TabItem value="GitLab" label="GitLab">
-
-[Set up a WebAuthn device](https://docs.gitlab.com/ee/user/profile/account/two_factor_authentication.html#set-up-a-webauthn-device)
-
+  <a href="https://docs.gitlab.com/ee/user/profile/account/two_factor_authentication.html#set-up-a-webauthn-device">Set up a WebAuthn
+    device</a>
   </TabItem>
 </Tabs>
 
@@ -126,6 +151,8 @@ Once the security key is added, the user will then be prompted for it when they 
 
 <Tabs groupId="source-control-type" className="my_tabs">
   <TabItem value="GitHub" label="GitHub" default>
+
+[Signing in with a passkey](https://docs.github.com/en/authentication/authenticating-with-a-passkey/signing-in-with-a-passkey)
 
 [Using a security key](https://docs.github.com/en/authentication/securing-your-account-with-two-factor-authentication-2fa/accessing-github-using-two-factor-authentication#using-a-security-key)
 
@@ -241,6 +268,14 @@ To sign commits the developer needs to generate a public key, add the public key
 Git commit signing is traditionally done with GPG keys, but many of the popular source control tools now allow you to leverage SSH keys. YubiKey supports both key types, so It’s up to your security policies to determine which approach works best for your use case and environment. This guide will focus on leveraging SSH keys in order to create cohesion with the previous section on authentication keys. Also linked below is a YubicoLabs resource to walk you through how to create GPG keys.
 
 ### Using SSH
+
+You can follow along with this video, or use the instructions below
+
+<ReactPlayer
+  controls
+  url="https://www.youtube.com/watch?v=2M2vKQwbCDk"
+  style={{ marginBottom: "2em" }}
+/>
 
 1. [Follow the steps above](#generate-an-ssh-key) to generate an SSH key using your YubiKey.
 2. [Follow the steps above](#add-the-ssh-key-to-your-account) to add the SSH key for commit signing - **Ensure that when prompted for `Key type` that you select `Signing key`**

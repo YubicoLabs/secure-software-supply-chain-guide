@@ -28,4 +28,9 @@ The YubiHSM2 is capable of generating a key pair that could be used for code sig
 
 Follow the steps on the link below to see an example of how to sign a JAR file using the YubiHSM2.
 
-[Configuring YubiHSM 2 for Java code signing](https://github.com/YubicoLabs/yubihsm-java-enrollment)
+- [Configuring YubiHSM 2 for Java code signing](https://github.com/YubicoLabs/yubihsm-java-enrollment)
+
+The YubiHSM2 isn't the only Yubico tool that can be used for code signing. Your YubiKey can also utilize it's PIV module to perform code signing. See the links below for examples on signing Android, and Apple based (iOS, macOS) applications
+
+- [Mac code signing](https://developers.yubico.com/PIV/Guides/Mac_code_signing.html)
+- [Android code signing](https://developers.yubico.com/PIV/Guides/Android_code_signing.html)

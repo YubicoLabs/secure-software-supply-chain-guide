@@ -23,6 +23,8 @@ The content above is meant to act as a high level summary of the guidance provid
 
 This section with provide actionable paths that you can take to protect the integrity of your software projects. These concepts will be used through the rest of this guide when highlighting the different actions that can be taken to protect the potential targets in your organization.
 
+Keep in mind that the concepts below are not encompassing of every technique that can be used to protect your software supply chain (such as static analysis, vulnerability scanning, etc). The concepts covered below are areas that can be specifically hardened through the use of a YubiKey or YubiHSM.
+
 ### Account protection
 
 Account protection is important as it prevents malicious users from gaining access to accounts, and making changes on someone's behalf. Developers would not want someone making changes to their account, or to the code that they have written. Administrators would not want someone with access to their accounts to change repository or organizational settings.
@@ -33,9 +35,9 @@ A YubiKey provides two factors of authentication: possession of the security key
 
 ### Commit signing
 
-Commit protection is important as it allows you to verify that the code added to a repository is coming from a trusted source. It is possible to make a commit seem as if it came from someone else by just changing the name and email details in your `git.config` file. In the eyes of git this isn't a problem as the metadata sent with a commit is not meant to act as a form of authentication. In the case of GitHub, you wouldn't be able to push code to another user's GitHub account, this would require authentication. Regardless, even with account protection you would want some form of git signing to combat:
+Commit protection is important as it allows you to verify that the code added to a repository is coming from a trusted source. It is possible to impersonate a user by making a commit seem as if it came from someone else by just changing the name and email details in your `git.config` file. In the eyes of git this isn't a problem as the metadata sent with a commit is not meant to act as a form of authentication. In the case of GitHub, you wouldn't be able to push code to another user's GitHub account, this would require authentication. Regardless, even with account protection you would want some form of git signing to combat:
 
-1. Commits coming from a compromised account
+1. Commits coming from a compromised or impersonated account
 2. Commits coming from a machine where your signing key is not present
 
 The YubiKey is able to generate cryptographic keys that are capable of signing commits. This ensures that any commit that is entering your codebase is coming from a legitimate user who has possession of the security key with the signing key present.

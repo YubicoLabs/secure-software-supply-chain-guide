@@ -91,7 +91,7 @@ const config = {
             items: [
               {
                 label: 'developers.yubico.com',
-                to: 'https://developers.yubico.com/Passkeys',
+                to: 'https://developers.yubico.com',
               },
               {
                 label: 'Passkey workshop',

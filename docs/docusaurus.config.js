@@ -7,7 +7,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Protect your software supply chain with YubiKeys and YubiHSMs',
-  tagline: 'Learn how to leverage the YubiKey and YubiHSM to help enhance, streamline, and secure your software development practices. This guide is for developers, architects, and administrators looking to get the most of their Yubico tools to improve their developer experience.',
+  tagline: 'Learn how to leverage the YubiKey and YubiHSM to help enhance, streamline, and secure your software development practices. This guide is for developers, architects, and administrators looking to get the most out of their Yubico tools to improve their developer experience.',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here

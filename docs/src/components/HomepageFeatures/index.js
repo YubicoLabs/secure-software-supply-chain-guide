@@ -15,7 +15,7 @@ const FeatureList = [
           around your application's development environment.
         </p>
         <p>
-          Often times these techniques get overlooked as they're seen as
+          Often times these techniques are overlooked as they're seen to add
           friction to the developer experience. With Yubico's tools, you never
           have to sacrifice security for ease of use. By the end of this guide
           you'll understand how a one time setup can provide both a secure, and
@@ -24,7 +24,7 @@ const FeatureList = [
         <p>
           The graph below shows what a secure environment looks like between an
           organization's administrators, developers, and infrastructure that are
-          all equipped with Yubico solutions.
+          all equipped with Yubico's security devices.
         </p>
       </div>
     ),

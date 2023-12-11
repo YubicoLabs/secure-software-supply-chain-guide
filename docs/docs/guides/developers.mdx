@@ -168,7 +168,7 @@ Once the security key is added, the user will then be prompted for it when they 
 
 Traditionally a developer could save their account credentials to a local configuration file that could be used by git to authorize actions. This would have allowed a developer to bypass the entering of their credentials for every git operation. Well, at this point in the documentation, it should be understood that our goal is to prevent the use of phishable credentials, such as usernames and passwords, or long lived authorization tokens on the machine.
 
-Locally storing credentials was such an issue, that GitHub banned the use of passwords for git operations. While the GitHub/GitLab CLI tools, mobile apps, and personal access tokens can be used, there is a better way.
+Locally storing credentials was such an issue that GitHub banned the use of passwords for git operations. While the GitHub/GitLab CLI tools, mobile apps, and personal access tokens can be used, there is a better way.
 
 Git supports the ability to use public key based authentication through SSH; this feature is complimented by the YubiKey's ability to generate SSH keys and to authenticate with them. A benefit to using YubiKey backed SSH keys is the possession factor - an attacker would be unable to perform a git operation without possession of the YubiKey that holds the private key. Another benefit is the YubiKey presents minimal disruption to a developers workflow. If the YubiKey is already present on a user's machine, all they need to do is tap it, and enter a pin to authorize a request. This is more ideal than having to perform a full browser based authentication ceremony, finding your phone to perform authorization from an app, or replacing an expired access token.
 
@@ -291,4 +291,4 @@ git config --global commit.gpgsign true
 
 ### Using GPG
 
-[Yubico labs - Sign git commits YubiKey](https://github.com/YubicoLabs/sign-git-commits-yubikey)
+[YubicoLabs - Sign git commits YubiKey](https://github.com/YubicoLabs/sign-git-commits-yubikey)

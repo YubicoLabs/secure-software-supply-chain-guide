@@ -16,7 +16,7 @@ Note that this material is not encompassing of every risk associated with this t
 
 Any topic that relates to software development will have developers at the forefront. The term developers is used to describe this persona, but this can be encompassed by any member of your organization who contributes code/material to your software projects, including: architects, technical writers, designers, and more. This isn’t limited to just people in your organization, this can also include 3rd party developers being contracted by your company, and the developers who maintain the open source or SaaS projects being leveraged from your software.
 
-Compromising a developer's account would allow an attacker to add their own malicious functions to a software project, making them a prime target. Keep in mind, that this isn't only the code being written directly to your repository, but the 3rd party dependencies and packages that are being used to support your core business logic.
+Compromising a developer's account would allow an attacker to add their own malicious functions to a software project, making them a prime target. Keep in mind, that this isn't only relevant to the code being written directly to your repository, but also the 3rd party dependencies and packages that are being used to support your core business logic.
 
 ### Administrators
 

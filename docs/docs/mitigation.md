@@ -21,7 +21,7 @@ The content above is meant to act as a high level summary of the guidance provid
 
 ## Risk mitigation techniques
 
-This section with provide actionable paths that you can take to protect the integrity of your software projects. These concepts will be used through the rest of this guide when highlighting the different actions that can be taken to protect the potential targets in your organization.
+This section will provide actionable paths that you can take to protect the integrity of your software projects. These concepts will be used through the rest of this guide when highlighting the different techniques that can be taken to protect the potential targets in your organization.
 
 Keep in mind that the concepts below are not encompassing of every technique that can be used to protect your software supply chain (such as static analysis, vulnerability scanning, etc). The concepts covered below are areas that can be specifically hardened through the use of a YubiKey or YubiHSM.
 

@@ -21,18 +21,46 @@ While the guidance on this page isn’t specific to YubiKeys, it will lay the fo
 
 We will start by enabling account protection in your source control tool. The main idea is to **not** allow your users to use traditional forms of authentication that are prone to phishing attacks. You will want to require the use of two-factor or multi-factor authentication to access accounts
 
-### Enforce 2FA on your personal account
+### Enforce 2FA on your administrator account
 
 <Tabs groupId="source-control-type" className="my_tabs">
   <TabItem value="GitHub" label="GitHub" default>
 
-[Configuring two-factor authentication using a security
-key](https://docs.github.com/en/authentication/securing-your-account-with-two-factor-authentication-2fa/configuring-two-factor-authentication#configuring-two-factor-authentication-using-a-security-key)
+:::tip Security keys vs passkeys
+GitHub allows you to leverage authentication through either a passkey or security key as 2FA. YubiKeys do support passkeys in the form of a device-bound discoverable credential. It's up to your security policy to decide which preference you have for your users, as YubiKeys will support both options.
+
+Yubico generally recommends to generate a passkey on a YubiKey as it enables passwordless login, and removes the need to utilize a passkey
+
+:::
+
+<ul>
+<li>
+    <a href="https://docs.github.com/en/authentication/authenticating-with-a-passkey/managing-your-passkeys">Managing your passkeys</a>
+  </li>
+  <li>
+    <a href="https://docs.github.com/en/authentication/securing-your-account-with-two-factor-authentication-2fa/configuring-two-factor-authentication#configuring-two-factor-authentication-using-a-security-key">Configuring two-factor authentication using a security key</a>
+  </li>
+</ul>
+  </TabItem>
+  <TabItem value="GitLab" label="GitLab">
+  <a href="https://docs.gitlab.com/ee/user/profile/account/two_factor_authentication.html#set-up-a-webauthn-device">Set up a WebAuthn
+    device</a>
+  </TabItem>
+</Tabs>
+
+Once the security key is added, you'll be prompted when you attempt to access your account depending on the option selected above.
+
+<Tabs groupId="source-control-type" className="my_tabs">
+  <TabItem value="GitHub" label="GitHub" default>
+
+[Signing in with a passkey](https://docs.github.com/en/authentication/authenticating-with-a-passkey/signing-in-with-a-passkey)
+
+[Using a security key](https://docs.github.com/en/authentication/securing-your-account-with-two-factor-authentication-2fa/accessing-github-using-two-factor-authentication#using-a-security-key)
 
   </TabItem>
   <TabItem value="GitLab" label="GitLab">
 
-[Enable two-factor authentication](https://docs.gitlab.com/ee/user/profile/account/two_factor_authentication.html#enable-two-factor-authentication)
+[Sign in using a WebAuthn device](https://docs.gitlab.com/ee/user/profile/account/two_factor_authentication.html#sign-in-using-a-webauthn-device)
 
   </TabItem>
 </Tabs>

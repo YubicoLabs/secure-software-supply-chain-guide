@@ -6,7 +6,7 @@ import ReactPlayer from "react-player";
 const FeatureList = [
   {
     title: "Protection for every stage of your software supply chain",
-    image: "/img/full_flow.png",
+    image: "/secure-software-supply-chain-guide/img/full_flow.png",
     description: (
       <div>
         <p>
